@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DBFirstEntityFramework;
+namespace DBFirstEntityFramework.DataModels;
 
 public partial class Aluno
 {

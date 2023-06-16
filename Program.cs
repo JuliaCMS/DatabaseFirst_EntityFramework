@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DBFirstEntityFramework.DataModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DBFirstEntityFramework
 {
@@ -16,9 +17,9 @@ namespace DBFirstEntityFramework
                 "3 - para adicionar novo curso ao aluno\n" +
                 "4 - para excluir um curso\n" +
                 "5 - para excluir um aluno\n" +
-                "6 - para consultar aluno pela matricula\n" +
-                "7 - para listar todos os alunos\n" +
-                "8 - para listar todos os cursos\n" +
+                "6 - para listar todos os alunos\n" +
+                "7 - para listar todos os cursos\n" +
+                "8 - para consultar aluno pela matricula\n" +
                 "9 - para listar relação entre cursos e alunos\n" +
                 "0 - para encerrar");
                 int op = int.Parse(Console.ReadLine());
@@ -188,6 +189,40 @@ namespace DBFirstEntityFramework
                             Console.WriteLine(ex.Message);
                         }
                         break;
+                    case 6:
+                        Console.WriteLine("Lista de todos os alunos:");
+                        List<Aluno> alunos = context.Alunos.ToList();
+                        foreach (Aluno item in alunos)
+                        {
+                            Console.WriteLine("ID " + item.Id + " - " + item.Nome);
+                        }
+                        Console.WriteLine("Pressione ENTER para voltar ao menu principal");
+                        Console.ReadKey();
+                        break;
+                    case 7:
+                        Console.WriteLine("Lista de todos os cursos:");
+                        List<Curso> cursos = context.Cursos.ToList();
+                        foreach (Curso item in cursos)
+                        {
+                            Console.WriteLine("ID " + item.Id + " - " + item.Nome);
+                        }
+                        Console.WriteLine("Pressione ENTER para voltar ao menu principal");
+                        Console.ReadKey();
+                        break;
+                    //case 8:
+                    //    Console.WriteLine("Lista de todos os alunos:");
+                    //    List<Aluno> alunos = (from Aluno a in context.Alunos select a).Include(alun => alun.Matriculas).ToList<Aluno>();
+                    //    foreach (Aluno item in alunos)
+                    //    {
+                    //        Console.WriteLine("ID " + item.Id + " - " + item.Nome);
+                    //        foreach (Matricula itemM in item.Matriculas)
+                    //        {
+                    //            Console.WriteLine("\t" + itemM.Registro + "\n");
+                    //        }
+                    //    }
+                    //    Console.WriteLine("Pressione ENTER para voltar ao menu principal");
+                    //    Console.ReadKey();
+                    //    break;
                 }
             } while (true);
         }
