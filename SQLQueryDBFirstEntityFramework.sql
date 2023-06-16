@@ -28,3 +28,16 @@ SELECT m.registro, a.nome AS nome_aluno, c.nome AS nome_curso
 FROM matricula m
 JOIN aluno a ON m.fk_alunoId = a.id
 JOIN curso c ON m.fk_cursoId = c.id;
+
+-- consulta um aluno especifico pelo id
+SELECT a.nome AS nome_aluno, c.nome AS nome_curso
+FROM matricula m
+JOIN aluno a ON m.fk_alunoId = a.id
+JOIN curso c ON m.fk_cursoId = c.id
+WHERE a.id = 1;
+
+-- consulta todos os alunos e seus id e cursos matriculados
+SELECT a.id, a.nome AS nome_aluno, c.nome AS nome_curso
+FROM aluno a
+LEFT JOIN matricula m ON m.fk_alunoId = a.id
+LEFT JOIN curso c ON m.fk_cursoId = c.id;
